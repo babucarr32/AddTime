@@ -17,7 +17,8 @@ def add_time(x, y, *optional):
 
     finalMinute = totalHour + totalMinute
     
+    print('{:02d}:{:02d}'.format(*divmod(finalMinute, 60)))
     return int(1440 / finalMinute), 1440 % finalMinute
 
-print(add_time("10:10 PM", "3:30"))
+print(add_time("6:30 PM", "205:12"))
 

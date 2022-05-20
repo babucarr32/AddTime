@@ -16,9 +16,15 @@ def add_time(x, y, *optional):
     totalMinute = int(firstTimeMinute) + int(secondTimeMinute)
 
     finalMinute = totalHour + totalMinute
-    
-    print('{:02d}:{:02d}'.format(*divmod(finalMinute, 60)))
-    return int(1440 / finalMinute), 1440 % finalMinute
 
-print(add_time("6:30 PM", "205:12"))
+    if "PM" in x:
+        Time = '{:02d}:{:02d}'.format(*divmod(finalMinute, 60))
+        spliter = Time.split(":")
+        MyTime = spliter[0]
+        if int(MyTime) >= 12:
+            return f"{int(MyTime) - 12}:{spliter[1]} AM (next day)" # formating the time for output
+        else:
+            return f"{str(MyTime).replace('0', '')}:{spliter[1]} PM" # formating the time for output
+
+print(add_time("3:00 PM", "3:10"))
 
